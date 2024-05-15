@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 1000px;
+            margin: auto;
+            border: 2px solid;
+        }
+
+        .inner{
+            width: 20%;
+            height: 100px;
+            background: red;
+            margin: 10px 0;
+            transition-property: width;
+            transition-duration: 1s;
+            transition-delay: 0s;
+            transition-timing-function: linear;
+            /* transition:width 1s; */
+        }
+
+        .in2{
+            transition-timing-function: ease-in;
+        }
+
+        .in3{
+            transition-timing-function: ease-out;
+        }
+
+        .in4{
+            transition-timing-function: ease-in-out;
+        }
+
+        .wrapper:hover .inner{
+            width: 100%;
+            background-color: yellow;
+        }
+
+        .main{
+            width: 300px;
+            height: 300px;
+            border: 2px solid hotpink;
+        }
+
+        .inner-extra{
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background-color: yellow;
+            opacity: 0;
+            /* display: none; */
+            transition: 0.2s;
+            visibility: hidden;
+        }
+
+        .main:hover .inner-extra {
+            /* display: block; */
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .inner-extra:hover{
+            /* opacity: 1; */
+            /* visibility: visible; */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="inner in1">
+            Lorem ipsum 
+        </div>
+        <div class="inner in2"></div>
+        <div class="inner in3"></div>
+        <div class="inner in4"></div>
+    </div>
+
+    <div class="main">
+        <div class="inner-extra"></div>
+    </div>
+</body>
+</html>

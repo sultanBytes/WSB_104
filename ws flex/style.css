@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.container{
+    width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.nav ul{
+    display: flex;
+}
+.logo{
+    width: 130px;
+}
+.logo img{
+    width: 100%;
+}
+.nav a{
+    color: black;
+}
+.nav ul li{
+    padding: 0 20px;
+    font-size: 22px;
+}
+.banner{
+    background-image: url('images/the-town-bg-01.jpg');
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-inner{
+    text-align: center;
+    color: white;
+}
+.banner-inner h1{
+    font-size: 50px;
+    font-weight: normal;
+}
+
+.banner-inner i{
+    font-size: 80px;
+    margin-top: 50px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+
+.banner-inner i:hover{
+    color: #3496D8;
+   
+}
+
+.intro-section{
+    display: flex;
+    width: 1320px;
+    margin: auto;
+    padding: 100px 0;
+}
+
+.intro-section > div{
+    width: 50%;   
+}
+
+.intro-section > div:first-child{
+    padding-right: 50px;
+}
+
+.intro-section > div:last-child{
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.intro-section > div > img{
+    width: 100%;
+}
+
+.intro-section > div:last-child h2{
+    font-size: 45px;
+    color: #3496D8;
+}
+
+.intro-section > div:last-child p{
+    padding-top: 30px;
+    font-size: 22px;
+    line-height: 30px;
+    color: grey;
+}
+
+.intro-section > div:last-child button{
+    border: none;
+    background-color: #3496D8;
+    padding: 15px 40px;
+    border-radius:40px;
+    color: white;
+    font-size: 20px;
+    margin-top: 40px;
+}
+.amenties{
+    width: 1320px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.amenties div{
+    text-align: center;
+    width: 25%;
+}

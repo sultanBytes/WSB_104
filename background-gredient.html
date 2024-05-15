@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrapper{
+			width: 1000px;
+			margin:100px auto;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 10px;
+		}
+		.inner{
+			height: 150px;
+			background: red;
+			border: 1px solid;
+		}
+		.in1{
+/*			grid-row-start: 1;*/
+/*			grid-row-end: 3;*/
+		}
+		.in2{
+			grid-row-start: 2;
+			grid-row-end: 3;
+			grid-column-start: 2;
+			grid-column-end: 3;
+		}
+		.in3{
+			grid-row-start: 3;
+			grid-row-end: 4;
+			grid-column-start: 3;
+			grid-column-end: 4;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="inner in1">1</div>
+		<div class="inner in2">2</div>
+		<div class="inner in3">3</div>
+		<!-- <div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div>
+		<div class="inner"></div> -->
+	</div>
+</body>	
+</html>

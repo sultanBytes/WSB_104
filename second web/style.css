@@ -1,0 +1,116 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	text-decoration: none;
+	list-style: none;
+}
+body{
+	background-image: url('images/waves.jpg');
+	background-size: cover;
+}
+html{
+	scroll-behavior: smooth;
+}
+.container{
+	width: 1000px;
+	margin: auto;
+/*	border: 1px solid red;*/
+}
+.header{
+	background-image: url('images/headerbg.jpg');
+	background-size: cover;
+	border-bottom: 10px solid skyblue;
+}
+.header > div{
+/*	height: 600px;*/
+	background-image: url('images/gridtile.png');
+	padding: 20px 0;
+/*	background-repeat: no-repeat;*/
+}
+
+.logo{
+	width: 300px;
+	margin: auto;
+/*	border:  1px solid yellow;*/
+}
+.logo img{
+	width: 100%;
+}
+.header .middle{
+	width: 450px;
+	margin: auto;
+	border-top: 1px solid skyblue;
+	border-bottom: 1px solid skyblue;
+	text-align:center;
+	font-size: 34px;
+	color: white;
+	padding: 30px 0;
+	margin-top: 125px;
+	font-size: 36px;
+}
+.menu{
+	padding-top:60px ;
+/*	border: 1px solid yellow;*/
+}
+.menu ul{
+	text-align: center;
+}
+.menu ul li{
+	display: inline-block;
+	border-right: 2px solid white;
+	padding: 10px 20px;
+}
+
+.menu ul li:last-child{
+	border: none;
+}
+.menu ul li a{
+	color: white;
+}
+.banner{
+	background-image: url('images/3.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+.banner > div{
+	background-color:rgba(0, 0, 0, 0.4);
+	text-align: center;
+	padding: 120px 0;
+}
+.banner > div > div{
+	display: inline-block;
+	border: 8px solid white;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	padding: 6px 15px;
+/*	margin: auto;*/
+}
+
+.content{
+	background-color: white;
+	padding: 30px 10px;
+	text-align: center;
+}
+.content p{
+	font-size: 17px;
+	line-height: 30px;
+	margin-bottom: 60px;
+}
+.content a:nth-child(2){
+	font-size: 20px;
+	line-height: 40px;
+}
+.content div{
+	padding: 50px;
+	margin-top: 40px;
+}
+.content a:last-child{
+	font-size: 25px;
+	text-decoration: underline;
+}
+
+.about-section .banner{
+	background-image: url('images/1.jpg');
+}

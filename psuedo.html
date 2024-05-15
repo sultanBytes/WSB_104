@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		div > ul > li{
+			border: 1px solid;
+			background: red;
+			margin-top: 6px;
+		}
+		/*li{
+			background: red;
+			margin: 10px;
+		}*/
+
+		/*ol li:nth-child(5){
+			background: yellow;
+		}
+		ol li:first-child{
+			background: yellow;
+		}
+		ol li:last-child{
+			background: yellow;
+		}*/
+
+		ol li:nth-of-type(odd){
+			background: yellow;
+		}
+		ol li:nth-of-type(even){
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>hello 1</li>
+			<li>hello 2</li>
+			<li>hello 3</li>
+			<li>hello 4</li>
+			<li>hello 5</li>
+			<li>hello 6
+				<ul class="inner-ul">
+					<li>hello world</li>
+					<li>hello world</li>
+					<li>hello world</li>
+					<li>hello world</li>
+					<li>hello world</li>
+				</ul>
+			</li>
+			<li>hello 7</li>
+			<li>hello 8</li>
+		</ul>
+
+		<ul>
+			<li>hello 1</li>
+			<li>hello 2</li>
+			<li>hello 3</li>
+			<li>hello 4</li>
+			<li>hello 5</li>
+			<li>hello 6</li>
+			<li>hello 7</li>
+			<li>hello 8</li>
+		</ul>
+	</div>
+	<div>
+		<ol>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+			<li>hello</li>
+		</ol>
+	</div>
+</body>
+</html>

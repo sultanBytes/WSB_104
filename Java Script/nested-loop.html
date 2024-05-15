@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		// for(let i = 1; i <= 5; i++){
+
+		// 	for(let j = 1; j <= 10; j++){
+		// 		console.log('hello');
+		// 	}
+
+		// }
+
+
+		// let i = 1;
+
+		// while(){}
+
+		// let x = 100;
+		// let y = 1000;
+
+		// for(let i = x; i <= y; i++){
+		// 	i = i.toString();
+
+		// 	let iLen = i.length;
+
+		// 	let total = 0;
+
+		// 	for(let j = 0; j < iLen; j++){
+		// 		let num = i[j];
+
+		// 		total += (num**iLen);
+		// 	}
+
+
+		// 	if(total == i){
+		// 		console.log(i);
+		// 	}
+		// }
+
+		// let i = 6;
+
+
+		// for(let i = 1; i <= 6; i++){
+
+		// 	for(let j = 1; j <= 6; j++){
+
+		// 		if(i == 1 || i == 6 || j == 1 || j == 6){
+		// 			document.write('*')
+		// 		}
+		// 		else{
+		// 			document.write('&nbsp;&nbsp;');
+		// 		}
+				
+		// 	}
+
+		// 	document.write('<br/>')
+
+		// }
+
+
+
+		let x = 7;
+
+		for(let i = 1; i <= x; i++){
+			for(let j = (x - i); j >= 0; j--){
+				document.write('&nbsp;');
+			}
+
+			for(let k = 1; k < (i*2); k += 2){
+				
+
+				if(k == 1 || k == ((i * 2) - 1) || i == 1 || i == x){
+					document.write('*')
+				}
+				else{
+					document.write('&nbsp;&nbsp;')
+				}
+			};
+
+			document.write('<br/>')
+		}
+
+	</script>
+</body>
+</html>

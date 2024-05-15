@@ -1,0 +1,127 @@
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: sans-serif;
+}
+body{
+	background: black;
+}
+.wrapper{
+	width: 1000px;
+	margin: auto;
+	border: 2px solid red;
+}
+
+.header{
+	background-color: #1656B6;
+	padding:15px 20px;
+}
+
+.logo{
+	width: 150px;
+	float: left;
+}
+
+.nav{
+	width: 700px;
+	float: right;
+	padding-top: 10px;
+}
+.clear{
+	clear: both;
+}
+
+.nav-item{
+	float: right;
+	width: 110px;
+	height: 50px;
+	background-image: url('img/menu-bg.png');
+	background-size: cover;
+	text-align: center;
+	line-height: 50px;
+}
+
+.link{
+	color: white;
+
+}
+
+.banner{
+	background-image: url('img/banner.jpg');
+	text-align: right;
+	background-size: cover;
+	padding: 30px 20px 90px 0;
+}
+.banner-heading{
+	line-height: 42px;
+	color: #0095DA;
+
+}
+
+.third-section{
+
+}
+
+.third-left{
+	width: 450px;
+	float: left;
+}
+
+.third-right{
+	width: 535px;
+	float: left;
+	height: 282px;
+	margin: 6px;
+
+}
+
+.left-item{
+	width: 216px;
+	background-image: url('img/abstract-textured-backgound.jpg');
+	background-size: cover;
+	text-align: center;
+	padding: 42px 0;
+	float: left;
+	margin-top: 6px;
+/*	margin-right: 6px;*/
+	margin-left: 6px;
+}
+.f1{
+	width: 234px;
+	border: 2px solid white;
+	margin: 10px 6px;
+	height: 200px;
+	float: left;
+	background-image: url('img/blue-concrete-wall-with-scratches.jpg');
+	background-size: cover;
+}
+.f2{
+	width: 484px;
+	border: 2px solid white;
+	margin: 10px 6px;
+	height: 200px;
+	float: left;
+	background-image: url('img/blue-concrete-wall-with-scratches.jpg');
+	background-size: cover;
+}
+.f3{
+	width: 234px;
+	border: 2px solid white;
+	margin: 10px 6px;
+	height: 200px;
+	float: left;
+	background-image: url('img/332369-PA7ESE-584.jpg');
+	background-size: cover;
+}
+
+.footer{
+	height: 300px;
+	background-color: #1656B6;
+}
+
+.about-mid{
+	margin: 6px;
+	height: 250px;
+	background:white;
+}

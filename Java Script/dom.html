@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main" id="d1">
+        <ul class="ulList">
+            <li class="myLi">hello 1</li>
+            <li class="myLi">hello 2</li>
+            <li class="myLi">hello 3</li>
+            <li class="myLi">hello 4</li>
+            <li class="myLi">hello 5</li>
+        </ul>
+    </div>
+    <script>
+        const container = document.getElementById('d1');
+        const lis = document.getElementsByClassName('myLi');
+
+        const myUl = document.getElementsByClassName('ulList');
+
+        const allDivs = document.getElementsByTagName('div');
+
+        // console.log(allDivs)
+
+        // console.log(myUl)
+
+        const divs = document.querySelector('ul li:nth-child(4)');
+
+        divs.style.border = '1px solid'
+        console.log(divs)
+
+        
+
+        for(let i = 0; i < lis.length; i++){
+            lis[i].style.backgroundColor = 'yellow';
+        }
+
+        // console.log(lis);
+
+    </script>
+</body>
+<script>
+    //document.getElementById('id');
+    //document.getElementsByClassName('classname');
+    //document.getElementsByTagName('')
+    //document.querySelector('css selector');
+    //document.querySelectorAll('css selector');
+</script>
+</html>

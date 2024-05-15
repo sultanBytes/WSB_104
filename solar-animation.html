@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			list-style: none;
+		}
+
+		body{
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background: #080E24;
+		}
+
+		@keyframes rotate{
+			100%{
+				transform:translate(-50%, -50%) rotate(360deg);
+			}
+		}
+
+		.wrapper >ul > li{
+			border-radius: 50%;
+			border: 1px solid #394057;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: rotate 4s infinite linear;
+		}
+
+		.wrapper >ul > li:nth-child(1){
+			border: none;
+			width: 60px;
+			height: 60px;
+			background: #FFCC33;
+			box-shadow: 0 0 10px 3px #FFCC33;
+			
+		}
+
+		.wrapper >ul > li:nth-child(2){
+			width: 120px;
+			height: 120px;
+			animation-duration: 5s;
+			
+		}
+		.wrapper >ul > li:nth-child(3){
+			width: 180px;
+			height: 180px;
+		}
+
+		.wrapper >ul > li:nth-child(4){
+			width: 250px;
+			height: 250px;
+			animation-duration: 8s;
+		}
+		.wrapper >ul > li:nth-child(5){
+			width: 300px;
+			height: 300px;
+		}
+		.wrapper >ul > li:nth-child(6){
+			width: 360px;
+			height: 360px;
+		}
+
+		.wrapper >ul > li:nth-child(2) > div{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: brown;
+			position: absolute;
+			left: 18px;
+		}
+
+		.wrapper >ul > li:nth-child(4) > div{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: blue;
+			position: absolute;
+			left: 18px;
+		}
+
+		.wrapper >ul > li:nth-child(4) > div > div{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			animation: rotate 4s infinite linear;
+		}
+
+		.wrapper >ul > li:nth-child(4) > div > div div{
+			width: 8px;
+			height: 8px;
+			background: white;
+			border-radius: 50%;
+			position: absolute;
+			left: 2px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li></li>
+			<li>
+				<div></div>
+			</li>
+			<li></li>
+			<li>
+				<div>
+					<div>
+						<div></div>
+					</div>
+				</div>
+			</li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+</html>
