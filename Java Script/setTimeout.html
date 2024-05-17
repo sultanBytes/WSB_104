@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">clg</button>
+
+    <button id="stop">stop</button>
+
+    <script>
+
+        const startBtn = document.querySelector('#start');
+        const stopBtn = document.querySelector('#stop');
+        const run = ()=>{
+            console.log('first');
+        }
+
+        
+        let x;
+        startBtn.addEventListener('click', ()=>{
+            x = setTimeout(run, 5000);
+        });
+
+        stopBtn.addEventListener('click', ()=>{
+            clearTimeout(x);
+        });
+    </script>
+</body>
+</html> 
