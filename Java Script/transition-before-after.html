@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body{
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .container{
+            width: 400px;
+        }
+
+        img{
+            width: 100%;
+        }
+
+        .main{
+            position: relative;
+        }
+
+        .main::after{
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(0);
+            transform: scale(0);
+            transition: 0.2s;
+        }
+
+        .main::before{
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(0);
+            transition: 0.2s 0.1s;
+        }
+
+        .main:hover::before{
+            transform: scale(1);
+        }
+
+        .main:hover::after{
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <img src="images/image01.avif" alt="">
+        </div>
+        <div class="button-container"></div>
+    </div>
+</body>
+</html>

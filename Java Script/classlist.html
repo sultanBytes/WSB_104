@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .container{
+            width: 500px;
+            border: 4px solid black;
+            font-size: 22px;
+            font-weight: 600;
+            margin: auto;
+            padding: 10px;
+            background-color: skyblue;
+        }
+
+        .active{
+            border-color: skyblue;
+            background-color: black;
+            color: skyblue;
+        }
+
+        .btns{
+            text-align: center;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere magni nihil distinctio voluptatibus nostrum sit aut, quibusdam dolorem dolor placeat autem iusto repudiandae molestias temporibus. Id officiis illum delectus.
+    </div>
+
+    <div class="btns">
+        <button class="addClass">add class</button>
+        <button class="removeClass">remove class</button>
+        <button class="toggleClass">toggle class</button>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const addbBtn = document.querySelector('.addClass');
+        const removeBtn = document.querySelector('.removeClass');
+        const toggleClass = document.querySelector('.toggleClass');
+
+        addbBtn.addEventListener('click', ()=>{
+            container.classList.add('active');
+        })
+
+        removeBtn.addEventListener('click', ()=>{
+            container.classList.remove('active');
+        })
+
+        toggleClass.addEventListener('click', ()=>{
+            container.classList.toggle('active');
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        header{
+            background-color: yellow;
+            padding: 20px 40px;
+        }
+
+        ul{
+            display: flex;
+            
+        }
+        li{
+            margin: 0 20px;
+            text-transform: capitalize;
+            position: relative;
+            /* padding: 10px 0; */
+        }
+        a{
+            color: black;
+        }
+
+        li::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+            bottom: 0;
+            transform-origin: right;
+            transition: transform 0.6s;
+            transform: scaleX(0);
+        }
+
+
+        li:hover::before{
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        /* li::after{
+            content: "";
+        } */
+
+        main{
+            height: 60vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .container{
+            width: 400px;
+            border: 1px solid;
+            position: relative;
+        }
+
+        .container::before{
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: aqua;
+            z-index: -1;
+            transition: 0.8s;
+        }
+
+        .container:hover::before{
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">home</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="container">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, necessitatibus voluptate officia repudiandae pariatur aliquam dolorum rem natus cumque recusandae possimus. Consectetur neque amet quam facilis, laborum rem nesciunt ea?
+        </div>
+    </main>
+</body>
+</html>
