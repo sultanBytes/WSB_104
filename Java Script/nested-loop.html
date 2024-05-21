@@ -22,27 +22,27 @@
 
 		// while(){}
 
-		// let x = 100;
-		// let y = 1000;
+		let x = 100;
+		let y = 1000;
 
-		// for(let i = x; i <= y; i++){
-		// 	i = i.toString();
+		for(let i = x; i <= y; i++){
+			i = i.toString();
 
-		// 	let iLen = i.length;
+			let iLen = i.length;
 
-		// 	let total = 0;
+			let total = 0;
 
-		// 	for(let j = 0; j < iLen; j++){
-		// 		let num = i[j];
+			for(let j = 0; j < iLen; j++){
+				let num = i[j];
 
-		// 		total += (num**iLen);
-		// 	}
+				total += (num**iLen);
+			}
 
 
-		// 	if(total == i){
-		// 		console.log(i);
-		// 	}
-		// }
+			if(total == i){
+				console.log(i);
+			}
+		}
 
 		// let i = 6;
 
@@ -57,7 +57,7 @@
 		// 		else{
 		// 			document.write('&nbsp;&nbsp;');
 		// 		}
-				
+		
 		// 	}
 
 		// 	document.write('<br/>')
@@ -66,26 +66,55 @@
 
 
 
-		let x = 7;
+		// let x = 7;
 
-		for(let i = 1; i <= x; i++){
-			for(let j = (x - i); j >= 0; j--){
-				document.write('&nbsp;');
+		// for(let i = 1; i <= x; i++){
+		// 	for(let j = (x - i); j >= 0; j--){
+		// 		document.write('&nbsp;');
+		// 	}
+
+		// 	for(let k = 1; k < (i*2); k += 2){
+		
+
+		// 		if(k == 1 || k == ((i * 2) - 1) || i == 1 || i == x){
+		// 			document.write('*')
+		// 		}
+		// 		else{
+		// 			document.write('&nbsp;&nbsp;')
+		// 		}
+		// 	};
+
+		// 	document.write('<br/>')
+		// }
+
+
+		function isPrime(num) {
+			if (num <= 1) return false;
+			if (num <= 3) return true;
+			
+  // Check if divisible by 2 or 3
+			if (num % 2 === 0 || num % 3 === 0) return false;
+			
+  // Check for divisors from 5 to sqrt(num)
+			for (let i = 5; i * i <= num; i += 6) {
+				if (num % i === 0 || num % (i + 2) === 0) return false;
 			}
-
-			for(let k = 1; k < (i*2); k += 2){
-				
-
-				if(k == 1 || k == ((i * 2) - 1) || i == 1 || i == x){
-					document.write('*')
-				}
-				else{
-					document.write('&nbsp;&nbsp;')
-				}
-			};
-
-			document.write('<br/>')
+			
+			return true;
 		}
+
+		function findPrimes(limit) {
+			const primes = [];
+			for (let i = 2; i <= limit; i++) {
+				if (isPrime(i)) {
+					primes.push(i);
+				}
+			}
+			return primes;
+		}
+
+		const primes = findPrimes(1000);
+		console.log(primes);
 
 	</script>
 </body>

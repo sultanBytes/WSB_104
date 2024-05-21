@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body{
+            /* height: 100vh; */
+            display: grid;
+            place-items: center;
+        }
+
+        .container{
+            width: 500px;
+            height: 200vh;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+
+    <script>
+        const div = document.querySelector('.container');
+
+        const Dtop = div.offsetTop;
+        const left = div.offsetLeft;
+        const width = div.offsetWidth;
+        const height = div.offsetHeight;
+
+       const scrollD =  pageYOffset;
+
+
+        console.log(Dtop, left, width, height, scrollD);
+    </script>
+</body>
+</html>

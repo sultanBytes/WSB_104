@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .blank-container{
+            height: 300vh;
+            background-color: aquamarine;
+        }
+
+        .counter{
+            padding: 100px;
+            text-align: center;
+        }
+
+        .container{
+            font-size: 30px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="blank-container"></div>
+
+    <div class="counter">
+        <div class="container">
+            00
+        </div>
+    </div>
+
+    <div class="blank-container"></div>
+
+    <script>
+        const counter = document.querySelector('.container');
+        let inter;
+        let i = 1;
+        const runCounter = ()=>{
+            counter.innerHTML = i;
+
+            i++;
+
+            if(i > 99)
+            {
+                clearInterval(inter);
+            }
+        };
+
+        let runInterval = ()=>{
+            inter = setInterval(runCounter, 10);
+        }
+
+        
+
+        window.addEventListener('scroll', ()=>{
+            const topDistance = counter.offsetTop;
+            const scrollCount = pageYOffset;
+
+            const winH = window.innerHeight;
+            const winW = window.innerWidth;
+
+            if(scrollCount > topDistance - (winH * 0.75))
+            {
+                runInterval();
+
+                runInterval = ()=>{};
+            }
+        })
+    </script>
+</body>
+</html>
