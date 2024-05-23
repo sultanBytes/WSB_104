@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+        /* body{
+            display: grid;
+            place-items: center;
+            height: 100vh;
+        } */
+        .container {
+            width: 500px;
+            height: 400px;
+            background-color: azure;
+            box-shadow: 0 0 6px 2px grey;
+            margin: auto;
+        }
+
+        section{
+            height: 600vh;
+            background-color: bisque;
+
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <section></section>
+    <section>
+        <div class="container"></div>
+    </section>
+    <section></section>
+    
+
+    <script>
+        const box = document.querySelector('.container');
+
+      const x = ()=>{
+            const details = box.getBoundingClientRect().top;
+            const top = box.offsetTop;
+
+            console.log(details, top);
+        }
+
+        window.addEventListener('scroll',x)
+
+        x();
+    </script>
+</body>
+</html>

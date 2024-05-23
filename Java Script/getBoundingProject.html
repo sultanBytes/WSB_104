@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+        body{
+            overflow-x: hidden;
+        }
+        .container h1{
+            text-align: center;
+            font-size: 40px;
+            color: white;
+            -webkit-text-stroke: 2px black;
+        }
+
+        .container p{
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        section{
+            height: 100vh;
+            background-color: bisque;
+            border: 1px solid black;
+            display: grid;
+            place-items: center;
+        }
+
+        .container h1:first-child{
+            transform: translateX(-70vw);
+            /* transition: 0.8s; */
+        }
+
+        .container h1:last-child{
+            transform: translateX(70vw);
+            /* transition: 0.8s; */
+        }
+    </style>
+</head>
+<body>
+    <section></section>
+    <section></section>
+    <section id="thisSection">
+        <div class="container">
+            <h1>HELLO</h1>
+            <h1>WORLD</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis dicta, nihil obcaecati iusto eaque consequatur harum quis qui fugiat laborum voluptatum accusamus eum nesciunt doloremque minus iste at magnam adipisci.
+            </p>
+        </div>
+    </section>
+    <section></section>
+    
+
+    <script>
+        const box = document.querySelector('#thisSection');
+        const headings = document.querySelectorAll('.container h1');
+
+        const winH = window.innerHeight;
+
+        window.addEventListener('scroll',()=>{
+            const details = box.getBoundingClientRect().top;
+
+            // console.log(details, winH * 0.5)
+
+            // if(details < winH * 0.5)
+            // {
+                headings[0].style.transform = `translateX(${details}px)`;
+                headings[1].style.transform = `translateX(${-details}px)`;
+            // }
+            // else
+            // {
+            //     headings[0].style.transform = `translateX(-${details}px)`;
+            //     headings[1].style.transform = `translateX(${details}px)`;
+            // }
+
+        })
+
+    </script>
+</body>
+</html>
