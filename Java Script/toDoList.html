@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background-color: aqua;
+            box-shadow: 0 0 6px 4px lightgray;
+            padding: 20px;
+
+        }
+
+        .to-do-head {
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+            gap: 10px;
+        }
+
+        .to-do-head input {
+            padding: 8px 5px;
+            border-radius: 4px;
+            border: 1px solid black;
+        }
+
+        .to-do-head button {
+            border-radius: 4px;
+            border: 1px solid black;
+            background-color: green;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .to-do-body {
+            padding: 20px;
+        }
+
+        .to-do-body ul li {
+            margin: 10px;
+            width: 100%;
+            border-bottom: 1px dashed black;
+            padding: 6px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .to-do-body ul li span {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+
+        .done span {
+            color: grey !important;
+            text-decoration: line-through !important;
+        }
+
+        .to-do-body ul li button {
+            background-color: red;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="to-do-head">
+            <input type="text">
+            <button>Add Task</button>
+        </div>
+        <div class="to-do-body">
+            <ul>
+                <!-- <li class="done">
+                    <input type="checkbox">
+                    <span>task</span>
+                    <button>Delete</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>task</span>
+                    <button>Delete</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>task</span>
+                    <button>Delete</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>task</span>
+                    <button>Delete</button>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const textInp = document.querySelector('.to-do-head input[type="text"]');
+        const addTaskBtn = document.querySelector('.to-do-head button');
+        const taskList = document.querySelector('.to-do-body > ul');
+
+
+        addTaskBtn.addEventListener('click', () => {
+            const userVal = textInp.value;
+
+            if (!userVal) 
+            {
+                alert('Please fill input');
+            }
+            else 
+            {
+                const newLi = document.createElement('li');
+                const newCheckBox = document.createElement('input');
+                newCheckBox.type = 'checkbox';
+                newCheckBox.onclick = ()=>{
+                    const parentLi = newCheckBox.parentNode;
+                    
+                    if(newCheckBox.checked)
+                    {
+                        parentLi.classList.add('done');
+                    }
+                    else
+                    {
+                        parentLi.classList.remove('done');
+                    }
+                }
+
+                const span = document.createElement('span');
+                span.innerText = userVal;
+
+                const dltBtn = document.createElement('button');
+                dltBtn.innerText = 'Delete';
+
+                newLi.appendChild(newCheckBox);
+                newLi.appendChild(span);
+                newLi.appendChild(dltBtn);
+
+                taskList.appendChild(newLi);
+
+                textInp.value = '';
+            }
+
+        })
+    </script>
+</body>
+
+</html>
