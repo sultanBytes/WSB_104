@@ -117,34 +117,48 @@
         const addTaskBtn = document.querySelector('.to-do-head button');
         const taskList = document.querySelector('.to-do-body > ul');
 
+        const showData = ()=>{
+            taskList.innerHTML = '';
+            const dataToShow = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
 
-        addTaskBtn.addEventListener('click', () => {
-            const userVal = textInp.value;
+            dataToShow.forEach((taskData)=>{
+               
 
-            if (!userVal) 
-            {
-                alert('Please fill input');
-            }
-            else 
-            {
                 const newLi = document.createElement('li');
+
+                if(taskData.status)
+                {
+                    newLi.classList.add('done');
+                }
+
                 const newCheckBox = document.createElement('input');
                 newCheckBox.type = 'checkbox';
+                newCheckBox.checked = taskData.status;
+
+
+                newCheckBox.value = taskData.id;
                 newCheckBox.onclick = ()=>{
-                    const parentLi = newCheckBox.parentNode;
                     
-                    if(newCheckBox.checked)
-                    {
-                        parentLi.classList.add('done');
+                const ifChecked = newCheckBox.checked;
+
+                const dataToHandleStatus = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
+
+                dataToHandleStatus.forEach((objTask, index)=>{
+                    if(objTask.id == taskData.id){
+                       dataToHandleStatus[index].status = ifChecked;
+
+                       localStorage.setItem('todolist_wsb_104', JSON.stringify(dataToHandleStatus));
+
+                    
                     }
-                    else
-                    {
-                        parentLi.classList.remove('done');
-                    }
+                })
+
+                   showData();
+
                 }
 
                 const span = document.createElement('span');
-                span.innerText = userVal;
+                span.innerText = taskData.task;
 
                 const dltBtn = document.createElement('button');
                 dltBtn.innerText = 'Delete';
@@ -155,7 +169,41 @@
 
                 taskList.appendChild(newLi);
 
-                textInp.value = '';
+                // textInp.value = '';
+            })
+        };
+
+        showData();
+
+        addTaskBtn.addEventListener('click', () => {
+            const userVal = textInp.value;
+
+            if (!userVal) 
+            {
+                alert('Please fill input');
+            }
+            else 
+            {
+                const taskList = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
+                let id = 1;
+
+                if(taskList.length != 0)
+                {
+                    id = taskList[taskList.length - 1].id + 1;
+                }
+
+                const taskObj = {
+                    id:id,
+                    task:userVal,
+                    status:false
+                }
+
+                taskList.push(taskObj);
+
+                localStorage.setItem('todolist_wsb_104', JSON.stringify(taskList));
+                showData();
+
+               
             }
 
         })
