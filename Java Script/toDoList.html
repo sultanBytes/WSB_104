@@ -15,7 +15,7 @@
         }
 
         .container {
-            width: 500px;
+            width: 1000px;
             margin: auto;
             background-color: aqua;
             box-shadow: 0 0 6px 4px lightgray;
@@ -76,6 +76,30 @@
             color: white;
             font-size: 14px;
             font-weight: 600;
+            cursor: pointer;
+        }
+
+        .controll-btns {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+
+        }
+
+        .controll-btns button {
+            border-radius: 4px;
+            border: 1px solid black;
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: 600;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
+
+        .controll-btns button:hover {
+            background-color: white;
+            color: red;
         }
     </style>
 </head>
@@ -109,6 +133,15 @@
                     <button>Delete</button>
                 </li> -->
             </ul>
+
+
+        </div>
+        <div class="controll-btns">
+            <button>Done tasks (0)</button>
+            <button>Pending tasks (0)</button>
+            <button>All tasks (0)</button>
+            <button>Delete done tasks</button>
+            <button>Delete all</button>
         </div>
     </div>
 
@@ -116,19 +149,38 @@
         const textInp = document.querySelector('.to-do-head input[type="text"]');
         const addTaskBtn = document.querySelector('.to-do-head button');
         const taskList = document.querySelector('.to-do-body > ul');
+        const controllBtns = document.querySelectorAll('.controll-btns button');
+        let checkedTasks = [];
+        let totalTasks = 0;
 
-        const showData = ()=>{
+        const showData = () => {
             taskList.innerHTML = '';
             const dataToShow = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
 
-            dataToShow.forEach((taskData)=>{
-               
+            totalTasks = dataToShow.length;
+
+            createLis(dataToShow);
+
+
+        };
+
+        let controllUnit = ()=>{
+            controllBtns[0].innerHTML = `Done tasks (${checkedTasks.length})`;
+            controllBtns[1].innerHTML = `Pending tasks (${totalTasks - checkedTasks.length})`;
+            controllBtns[2].innerHTML = `All tasks (${totalTasks})`;
+        }
+
+        const createLis = (data) => {
+            checkedTasks = [];
+            taskList.innerHTML = '';
+            data.forEach((taskData, i) => {
+
 
                 const newLi = document.createElement('li');
 
-                if(taskData.status)
-                {
+                if (taskData.status) {
                     newLi.classList.add('done');
+                    checkedTasks.push(taskData);
                 }
 
                 const newCheckBox = document.createElement('input');
@@ -137,23 +189,23 @@
 
 
                 newCheckBox.value = taskData.id;
-                newCheckBox.onclick = ()=>{
-                    
-                const ifChecked = newCheckBox.checked;
+                newCheckBox.onclick = () => {
 
-                const dataToHandleStatus = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
+                    const ifChecked = newCheckBox.checked;
 
-                dataToHandleStatus.forEach((objTask, index)=>{
-                    if(objTask.id == taskData.id){
-                       dataToHandleStatus[index].status = ifChecked;
+                    const dataToHandleStatus = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
 
-                       localStorage.setItem('todolist_wsb_104', JSON.stringify(dataToHandleStatus));
+                    dataToHandleStatus.forEach((objTask, index) => {
+                        if (objTask.id == taskData.id) {
+                            dataToHandleStatus[index].status = ifChecked;
 
-                    
-                    }
-                })
+                            localStorage.setItem('todolist_wsb_104', JSON.stringify(dataToHandleStatus));
 
-                   showData();
+
+                        }
+                    })
+
+                    showData();
 
                 }
 
@@ -162,6 +214,16 @@
 
                 const dltBtn = document.createElement('button');
                 dltBtn.innerText = 'Delete';
+                dltBtn.onclick = () => {
+
+                    if (confirm('Are you sure to delete...')) {
+                        const dataToHandleDelete = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
+                        dataToHandleDelete.splice(i, 1);
+
+                        localStorage.setItem('todolist_wsb_104', JSON.stringify(dataToHandleDelete));
+                        showData();
+                    }
+                }
 
                 newLi.appendChild(newCheckBox);
                 newLi.appendChild(span);
@@ -169,33 +231,32 @@
 
                 taskList.appendChild(newLi);
 
+                controllUnit();
+
                 // textInp.value = '';
             })
-        };
+        }
 
         showData();
 
         addTaskBtn.addEventListener('click', () => {
             const userVal = textInp.value;
 
-            if (!userVal) 
-            {
+            if (!userVal) {
                 alert('Please fill input');
             }
-            else 
-            {
+            else {
                 const taskList = JSON.parse(localStorage.getItem('todolist_wsb_104')) || [];
                 let id = 1;
 
-                if(taskList.length != 0)
-                {
+                if (taskList.length != 0) {
                     id = taskList[taskList.length - 1].id + 1;
                 }
 
                 const taskObj = {
-                    id:id,
-                    task:userVal,
-                    status:false
+                    id: id,
+                    task: userVal,
+                    status: false
                 }
 
                 taskList.push(taskObj);
@@ -203,9 +264,28 @@
                 localStorage.setItem('todolist_wsb_104', JSON.stringify(taskList));
                 showData();
 
-               
+
             }
 
+        });
+
+        controllBtns[4].addEventListener('click', () => {
+            if (confirm('Are you sure to delete all tasks')) {
+                localStorage.clear('todolist_wsb_104');
+                showData();
+            }
+
+        });
+
+        
+       
+
+        controllBtns[0].addEventListener('click', ()=>{
+            createLis(checkedTasks);
+        })
+
+        controllBtns[2].addEventListener('click', ()=>{
+            showData();
         })
     </script>
 </body>
