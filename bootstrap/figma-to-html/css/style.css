@@ -1,11 +1,92 @@
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    --theme-blue-color:#2699FB;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    list-style: none;
+}
+
+header {
+    padding: 15px 135px;
+}
+
+.themeBtn {
+    background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    border: 1px solid;
+    color: white;
+    border-radius: 8px;
+}
+
+.themeBtn:hover {
+    background: transparent;
+    border-color: black;
+    color: black !important;
+}
+
+.hero-section > .container .row>.col:first-child h1 {
+    font-family: Inter;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 68px;
+    text-align: left;
+    background-image: url(../images/Vector\ 63.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 40% 98%;
+}
+
+.hero-section > .container .row>.col:first-child h1 span {
+    background: linear-gradient(93.77deg, #0ACEFE -6.36%, #2699FB 50.16%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-section > .container .row>.col:first-child p {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 35px;
+    text-align: left;
+    color: #0A2134;
 
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
+.hero-section > .container .row>.col:first-child ul li i{
+    color: var(--theme-blue-color);
+}
+
+.hero-section > .container .row>.col:first-child ul li{
+    line-height: 30px;
+}
+
+.hero-section-form{
+    max-width: 500px;
+    margin: auto;
+    background-image: url(../images/Ellipse\ 92.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+.hero-section-form form{
+    box-shadow: 0px 1px 2px 0px #1018280F;
+}
+
+.hero-section-form form > div:first-child h2{
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    -webkit-text-stroke: 1px var(--theme-blue-color);
+    color: white;
+}
+
+.hero-section-form form > div:first-child p{
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-text-stroke: 1px var(--theme-blue-color);
+    color: white;
 }

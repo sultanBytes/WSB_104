@@ -1,0 +1,29 @@
+@media only screen and (max-width: 992px){
+    header{
+        padding: 5px 20px;
+    }
+}
+
+@media only screen and (max-width: 576px){
+    header{
+        padding: 4px;
+    }
+
+    .logo{
+        width: 100px;
+    }
+
+    .fa-whatsapp-btn{
+        border: none !important;
+    }
+
+    .fa-whatsapp-btn i{
+        font-size: 28px !important;
+    }
+
+    .hero-section > .container .row>.col:first-child h1{
+        font-size: 32px;
+        line-height: 40px;
+        text-align: center;
+    }
+}
