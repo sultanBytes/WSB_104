@@ -26,4 +26,8 @@
         line-height: 40px;
         text-align: center;
     }
+
+    .achievment-section ul li{
+        border-bottom: 1px solid var(--theme-blue-color);
+    }
 }

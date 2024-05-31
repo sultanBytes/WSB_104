@@ -90,3 +90,27 @@ header {
     -webkit-text-stroke: 1px var(--theme-blue-color);
     color: white;
 }
+
+.achievment-section ul{
+    box-shadow: 0px 4px 80px -2px #002F5814;
+    border-radius: 8px;
+}
+
+.achievment-section ul h5{
+    color: var(--theme-blue-color);
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.achievment-section ul p{
+    color: #43505B;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+.certificate-block{
+    background-image: url(../images/image\ 136.png), url(../images/Ellipse\ 94.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 8% 9%, 55% 100%;
+}
