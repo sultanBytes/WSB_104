@@ -1,0 +1,82 @@
+.logo{
+    width: 140px;
+}
+
+.location-drop-down{
+    width: 500px !important;
+    top: 124% !important;
+}
+
+.location-drop-down h4{
+    font-size: 16px;
+}
+
+.location-drop-down input{
+    font-size: 14px;
+}
+
+.location-drop-down div span{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid grey;
+    font-size: 10px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 500;
+    color: grey;
+    position: relative;
+}
+
+.location-drop-down div span::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 1px;
+    background-color: grey;
+    right: 100%;
+}
+
+.location-drop-down div span::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 1px;
+    background-color: grey;
+    left: 100%;
+}
+
+.overlay{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+
+.nav-form-inp{
+    width: 800px !important;
+}
+
+/* .nav-form-inp i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+} */
+
+.nav-form-inp::after{
+    content: "\f002";
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
