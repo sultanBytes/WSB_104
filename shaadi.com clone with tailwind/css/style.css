@@ -1,0 +1,6 @@
+*{
+    box-sizing: border-box !important;
+}
+.container{
+    max-width: 1140px !important;
+}

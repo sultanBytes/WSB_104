@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                container: {
+                    center: true,
+                    padding: {
+                        DEFAULT: '10px',
+                        sm: '20px',
+                        lg: '30px',
+                        xl: '45px',
+                        '2xl': '6rem',
+                    }
+                },
+                screens: {
+                    'sm': '640px',
+
+                    'md': '768px',
+
+                    'lg': '800px',
+
+                    'xl': '1280px',
+
+                    '2xl': '1536px',
+                },
+                extend: {
+                    screens: {
+                        'akshu': '400px',
+                        'hello': '700px'
+                    },
+
+                    colors: {
+                        clifford: '#da373d',
+                        akshay: 'rgb(122,346,286)'
+                    },
+                    spacing: {
+                        'themePadding': '20px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container bg-[olive] group hover:p-[100px] ">
+        <h1 class="text-center underline bg-akshay text-[30px] hello:text-[yellow] akshu:text-[red]">hello world</h1>
+
+    </div>
+
+    <div class="container">
+        <ul class="columns-4">
+            <li class="bg-[red] border">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, iusto dolorum dolorem minus laudantium nostrum consequuntur tempora rem at, odit inventore! Dicta, voluptas. Minima provident doloremque voluptatum non suscipit qui.
+            </li>
+            <li class="bg-[red] border">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo dolore itaque obcaecati excepturi, aliquid ut aliquam mollitia molestiae consectetur ipsa, veniam voluptatum debitis error animi voluptas iste, possimus est architecto.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora deleniti animi corporis necessitatibus? Porro commodi maiores, nostrum non, blanditiis molestias id eius, voluptate vitae recusandae assumenda atque minus aspernatur.
+            </li>
+            <li class="bg-[red] border">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo dolore itaque obcaecati excepturi, aliquid ut aliquam mollitia molestiae consectetur ipsa, veniam voluptatum debitis error animi voluptas iste, possimus est architecto.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora deleniti animi corporis necessitatibus? Porro commodi maiores, nostrum non, blanditiis molestias id eius, voluptate vitae recusandae assumenda atque minus aspernatur.
+            </li>
+            <li class="bg-[red] border break-after-column">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo dolore itaque obcaecati excepturi, aliquid ut aliquam mollitia molestiae consectetur ipsa, veniam voluptatum debitis error animi voluptas iste, possimus est architecto.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora deleniti animi corporis 
+            </li>
+            <li class="bg-[red] border">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo dolore itaque obcaecati excepturi, aliquid ut aliquam mollitia molestiae consectetur ipsa, veniam voluptatum debitis error animi voluptas iste, possimus est architecto.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui tempora deleniti animi corporis necessitatibus? Porro commodi maiores, nostrum non, blanditiis molestias id eius, voluptate vitae recusandae assumenda atque minus aspernatur.
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
