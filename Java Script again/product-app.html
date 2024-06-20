@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
             list-style: none;
@@ -120,16 +121,106 @@
             padding: 10px 20px;
             text-transform: capitalize;
         }
+
+        .cart{
+            display: flex;
+            justify-content: end;
+            position: sticky;
+            top: 0;
+            padding:10px 40px;
+            background-color: white;
+        }
+
+        .cart i{
+            font-size: 40px;
+            cursor: pointer;
+            color: olive;
+        }
+
+        .cart-description{
+            height: 100vh;
+            width: 400px;
+            position: fixed;
+            right: -100%;
+            background-color: white;
+            top: 0;
+            overflow-y: scroll;
+            transition: 0.4s;
+        }
+
+        .cart-description > span{
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 30px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+
+        .cart-description::-webkit-scrollbar{
+            width: 2px;
+        }
+
+        .cart-description::-webkit-scrollbar-track{
+            background-color: olive;
+        }
+
+        .cart-description::-webkit-scrollbar-thumb{
+            background-color: red;
+        }
+
+        .cart-description table{
+            /* margin-top: ; */
+            border-collapse: collapse;
+            margin:50px auto;
+        }
+
+        .cart-description table,
+        .cart-description th,
+        .cart-description td{
+            padding: 2px 4px;
+            font-size: 12px !important;
+        }
     </style>
 </head>
 
 <body>
+    <div class="cart">
+        <i class="fa-solid fa-cart-shopping"></i><sup></sup>
+    </div>
+
+    <div class="cart-description">
+        <span>&times;</span>
+
+        <table  border="1">
+            <thead>
+                <tr>
+                    <th>Sr. no.</th>
+                    <th>Product name</th>
+                    <th>Quantity</th>
+                    <th>
+                        <button>+</button>
+                        <button>-</button>
+                    </th>
+                    <th><button>
+                        <i class="fa-solid fa-trash"></i>
+                    </button></th>
+                    <th>Price</th>
+                    <th>Total price</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
     <div class="container">
         <h1>Products</h1>
 
         <div class="overlay"></div>
         <div class="product-details">
-
+           
         </div>
         <div class="product-container">
             <div class="filter">
@@ -146,6 +237,12 @@
         const overlay = document.querySelector('.overlay');
         const productDetails = document.querySelector('.product-details');
         const productCats = document.querySelector('.product-cats');
+        const cartTotal = document.querySelector('.cart sup');
+        const cartBtn = document.querySelector('.cart i');
+        const cart = document.querySelector('.cart-description');
+        const cartCloseBtn = document.querySelector('.cart-description > span');
+        const cartTable = document.querySelector('.cart-description table tbody');
+        let alldata;
 
 
         const showData = async (dataToshow) => {
@@ -158,14 +255,14 @@
                         <img src="${product.thumbnail}" alt="">
                     </figure>
 
-                    <h2>${product.name}</h2>
+                    <h2>${product.title}</h2>
                    <p>
                     $ <span>${product.price}</span>
                    </p>
 
                    <div>
                     <button value="${product.id}" onclick="viewDetails(${product.id})">View Details</button>
-                    <button value="${product.id}">Add to cart</button>
+                    <button value="${product.id}" onclick="addToCart(${product.id})">Add to cart</button>
                    </div>
                 </div>`;
             });
@@ -206,6 +303,8 @@
             showData(actualData.products);
 
             showCats(categories);
+
+            alldata = actualData.products;
         }
 
         fetchData();
@@ -242,14 +341,92 @@
 
             const newData = catActualData.products.filter((v) => checkedCategories.includes(v.category));
 
-            if(checkedCategories.length === 0 ){
+            if (checkedCategories.length === 0) {
                 showData(catActualData.products);
             }
-            else{
+            else {
                 showData(newData);
             }
-            
-        }
+
+        };
+
+
+        const addToCart = (p_id) => {
+            const cartData = JSON.parse(localStorage.getItem('wsb_104_cart')) || [];
+
+            const productIndex = cartData.findIndex((v) => v.productId === p_id);
+
+
+
+            let productDetails = {};
+
+            if (productIndex === -1) {
+                let productInInAllData = alldata.findIndex((a_data)=> a_data.id === p_id);
+
+                productDetails = {
+                    productId: p_id,
+                    product:alldata[productInInAllData],
+                    productQuentity: 1
+                };
+
+                cartData.push(productDetails);
+            }
+            else{
+               
+                cartData[productIndex].productQuentity += 1;
+            }
+
+
+
+            localStorage.setItem('wsb_104_cart', JSON.stringify(cartData));
+
+            manageCart();
+
+        };
+
+        const manageCart = ()=>{
+            const cartData = JSON.parse(localStorage.getItem('wsb_104_cart')) || [];
+            let totalProductInCart = 0;
+
+            cartData.forEach((cartItem)=>{
+                totalProductInCart += cartItem.productQuentity;
+            });
+
+            cartTotal.innerHTML = totalProductInCart;
+        };
+
+        manageCart();
+
+        cartBtn.addEventListener('click', ()=>{
+            const cartData = JSON.parse(localStorage.getItem('wsb_104_cart')) || [];
+            cart.style.right = '0';
+
+            let cartDataToShow = '';
+
+            cartData.forEach((cartProduct, i)=>{
+                cartDataToShow += `<tr>
+                    <th>${i + 1}</th>
+                    <th>${cartProduct.product.title}</th>
+                    <th>${cartProduct.productQuentity}</th>
+                    <th>
+                        <button>+</button>
+                        <button>-</button>
+                    </th>
+                    <th><button>
+                        <i class="fa-solid fa-trash"></i>
+                    </button></th>
+                    <th>${cartProduct.product.price}</th>
+                    <th>${cartProduct.product.price * cartProduct.productQuentity}</th>
+                </tr>`;
+            });
+
+            cartTable.innerHTML = cartDataToShow;
+           
+        });
+
+        cartCloseBtn.addEventListener('click', ()=>{
+            cart.style.right = '-100%';
+        })
     </script>
 </body>
 
