@@ -9,42 +9,42 @@
     
     <script>
 
-        //example****----
-
-        // console.log('1');
-        
-        // setTimeout(()=>{
-        //     console.log('2');
-        // }, 0);
-
-        // console.log('3');
-
-
-        //situation****----
-
         // let a = 10;
         // let b;
 
-        // setTimeout(()=>{
-        //     b = 20;
-        // }, 1);
+        // setTimeout(()=>{b = 10}, 0);
 
-        // console.log(a+b);
+        // console.log(b);
 
-        //promise****----
+       
+        
+        // const delay = new Promise((resolve, reject)=>{
+        //     setTimeout(()=>{
+        //         b = 10;
+        //         resolve(b);
+        //     },5000);
+        // })
 
-        // const handlePromise = async()=>{
-        //     let a = 10;
-        //     let b;
-        //     b = await setTimeout(()=>{ 
-        //         b = 20,
-        //         return b;
-        //     }, 2);
+        // .then((b)=>{
+        //     console.log(a + b);
+        // });
 
-        //     console.log(b); 
+        // const delay = async ()=>{
+        //     await new Promise((resolve, reject)=>{
+        //         setTimeout(()=>{
+        //             b = 20;
+
+        //             resolve(b);
+        //         },0)
+        //     });
+
+        //     console.log(a + b);
         // };
 
-        // handlePromise();
+        // delay();
+
+        
+        
     </script>
 </body>
 </html>
