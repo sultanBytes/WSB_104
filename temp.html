@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="hello"></div>
+	<div class="main"></div>
+	<input type="" class="inp" name="">
+	<div class="container"></div>
+
+	<button onclick="changeData()">changedata</button>
+</body>
+<script type="text/javascript">
+	// let name = 'test';
+
+	// const showData = ()=>{
+	// 	document.querySelector('.hello').innerHTML = name;
+	// 	document.querySelector('.main').innerHTML = name;
+	// 	document.querySelector('.inp').value = name;
+	// 	document.querySelector('.container').innerHTML = name;
+	// }
+
+	// showData();
+
+	// const changeData = ()=>{
+	// 	name = 'check';
+
+	// 	showData();
+	// }
+
+	const obj = {
+		name: 'akshay',
+		age: '30'
+	};
+
+	// const name = obj.name;
+	// const age = obj.age;
+
+	// console.log(name, age)
+
+	const { name, age } = obj;
+
+	console.log(name, age)
+</script>
+</html>

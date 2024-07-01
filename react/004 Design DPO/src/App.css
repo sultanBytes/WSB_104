@@ -1,0 +1,136 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+.header{
+  background-color: #EBF8FC;
+}
+
+.container{
+  max-width: 1365px;
+  margin: auto;
+}
+.header .container{
+ 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .container{
+  /* padding: 10px 0; */
+}
+.header .logo{
+  width: 180px;
+  margin-right: 40px;
+}
+
+img{
+  width: 100%;
+}
+
+.user-header ul{
+  display: flex;
+  align-items: center;
+}
+
+.user-header ul img{
+  width: 22px;
+  margin-right: 10px;
+}
+
+.user-header ul li{
+  margin: 0 8px;
+  
+}
+
+.user-header ul li:nth-child(4) button{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  color: #FF8C00;
+  font-size: 18px;
+  cursor: pointer;
+}
+.user-header ul li:nth-child(4) button:hover{
+  color: #EC6B6C;
+}
+
+.user-header ul li:nth-child(5) button{
+  padding: 10px 15px;
+  background-color: #EC6B6C;
+  border: 1px solid #EC6B6C;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.user-header ul li:nth-child(5) button:hover{
+  background-color: white;
+  color: #EC6B6C;
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+}
+.menu nav ul{
+  display: flex;
+}
+
+.menu nav ul li{
+  margin: 0 4px;
+  padding: 30px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+}
+
+.menu nav ul li:hover{
+  color: #EC6B6C;
+  cursor: pointer;
+}
+
+.menu nav ul li::after{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: #EC6B6C;
+  left: 0;
+  bottom: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.menu nav ul li:hover::after{
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.hero-section{
+  height: 400px;
+  background-color: lightblue;
+}
+
+.explore-cats .container{
+  padding: 20px 0;
+}
+
+.explore-cats .container h1{
+ text-align: center;
+}
+
+.cats-inner{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 15px;
+}
