@@ -16,14 +16,22 @@ function App() {
     if(ifNum) string += '1234567890';
     if(ifChar) string += '!@#$%^&*()?';
     
-    // const passLength = length;
+    let password = '';
 
-    console.log(string);
+    for(let i = 1; i <= length; i++){
+      let random = Math.floor(Math.random() * string.length);
+      password += string[random];
+
+      
+    }
+
+    setPass(password);
   };
 
   useEffect(()=>{
     createPassword();
   },[ifNum, ifChar, ifUpper, length]);
+
 
   return (
     <>
