@@ -1,0 +1,39 @@
+.logo{
+  width: 200px;
+}
+
+img{
+  width: 100%;
+}
+
+.navbar-links a{
+  font-size: 13px;
+  color: #878787;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.navbar-links a:hover{
+  color: #EE414A;
+}
+
+.login-btn{
+  border-radius: 8px;
+  border: 1px solid #E73540;
+  background-color:#E73540;
+  padding: 8px 18px;
+  color: white;
+  transition: 0.2s;
+}
+
+.login-btn:hover{
+  background-color: white;
+  color: #E73540;
+}
+
+.navbar-icons{
+  padding: 1px 6px 6px 6px;
+  border-radius: 50%;
+  background-color: #FDE1E3;
+  margin: 0 10px;
+}
