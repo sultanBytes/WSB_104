@@ -1,5 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none !important;
+}
 .logo{
-  width: 200px;
+  width: 210px;
 }
 
 img{
@@ -7,7 +14,7 @@ img{
 }
 
 .navbar-links a{
-  font-size: 13px;
+  font-size: 14px;
   color: #878787;
   font-weight: 500;
   margin: 0 10px;
@@ -36,4 +43,55 @@ img{
   border-radius: 50%;
   background-color: #FDE1E3;
   margin: 0 10px;
+}
+
+.home-banner{
+  background-image: url('./assets/images/collections+background.jpeg');
+  text-align: center;
+  padding: 25px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(211, 211, 211, 0.812);
+}
+
+.home-banner img{
+  width: 350px;
+  margin-top: -25px;
+}
+
+.home-banner h2{
+  text-transform: uppercase;
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.home-banner p{
+  color: black ;
+  line-height: 6px;
+}
+
+.home-banner p:last-child{
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.slider-card{
+  padding: 0 10px;
+}
+
+@media only screen and (max-width: 992px){
+  .logo{
+    width: 180px;
+  }
+  .home-banner p{
+    line-height: 20px;
+  }
+}
+
+@media only screen and (max-width: 450px){
+  .home-banner img{
+    width: 100%;
+    margin-top: -25px;
+  }
 }

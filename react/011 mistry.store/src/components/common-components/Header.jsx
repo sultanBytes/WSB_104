@@ -16,7 +16,7 @@ import { FaLanguage } from 'react-icons/fa';
 const Header = () => {
     return (
         <>
-            <Navbar expand="lg" className="">
+            <Navbar expand="lg" className="px-1">
                 <Container fluid>
                     <Navbar.Brand href="#" className='logo'>
                         <Link to='/'>
