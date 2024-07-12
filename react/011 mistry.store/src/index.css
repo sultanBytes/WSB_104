@@ -80,6 +80,52 @@ img{
   padding: 0 10px;
 }
 
+.tab-head button{
+  padding: 8px 40px;
+  border-radius: 60px;
+  margin-right: 8px;
+  background-color: transparent;
+  border: 1px solid lightgray;
+  font-size: 17px;
+  color: grey;
+}
+
+.active-tab-btn{
+  background-color: black !important;
+  color: white !important;
+}
+
+
+
+.tab-body{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 20px;
+  padding: 40px 20px;
+}
+.new-nav{
+  position: relative;
+}
+.new-nav::after{
+  content: "new";
+  padding: 0 10px 1px 10px;
+  border-radius: 12px;
+  background-color: rgba(255, 0, 157, 0.384);
+  box-shadow: 0 0 0.1px 0.2px rgb(100, 98, 98);
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  top: -6px;
+  right: -20px;
+  animation: navBlink 1s infinite;
+}
+
+@keyframes navBlink{
+  50%{
+    opacity: 0;
+  }
+}
+
 @media only screen and (max-width: 992px){
   .logo{
     width: 180px;

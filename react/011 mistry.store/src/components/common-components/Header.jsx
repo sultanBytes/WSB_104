@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -14,9 +14,36 @@ import { FiPhoneCall } from 'react-icons/fi';
 import { FaLanguage } from 'react-icons/fa';
 
 const Header = () => {
+    const [headerPosition, setPosition] = useState(null);
+    const [transition, setTransition] = useState('0s');
+
+    useEffect(()=>{
+        window.addEventListener('scroll', () => {
+
+            if(window.scrollY > 500){
+                setPosition('0px');
+                setTransition('0.6s');
+            } else {
+                setPosition(`${-window.scrollY}px`);
+                setTransition('0s');
+            }
+            console.log(window.scrollY);
+        });
+        
+        return ()=>{
+            window.removeEventListener('scroll');
+        }
+
+    },[]);
     return (
         <>
-            <Navbar expand="lg" className="px-1">
+            <Navbar expand="lg" className="px-1" style={{
+                backgroundColor:'white',
+                zIndex:'9999',
+                position:'sticky',
+                top:headerPosition,
+                transition:transition
+            }}>
                 <Container fluid>
                     <Navbar.Brand href="#" className='logo'>
                         <Link to='/'>
@@ -32,7 +59,7 @@ const Header = () => {
                         >
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/pdf-catelog">PDF Catelog</Nav.Link>
-                            <Nav.Link href="#">Collections By Mistry.Store</Nav.Link>
+                            <Nav.Link href="#" className='new-nav'>Collections By Mistry.Store</Nav.Link>
                             <Nav.Link href="/pdf-catelog">About Us</Nav.Link>
                             <Nav.Link href="/pdf-catelog">Contact Us</Nav.Link>
                             <Nav.Link href="/pdf-catelog">Blogs</Nav.Link>
