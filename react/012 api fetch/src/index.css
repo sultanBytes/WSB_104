@@ -98,3 +98,12 @@ img{
   text-align: center;
  
 }
+
+.categories ul{
+  height: 30vh;
+  overflow-y: scroll;
+}
+
+.price-filter{
+  padding: 20px 0;
+}

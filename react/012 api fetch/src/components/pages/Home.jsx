@@ -9,10 +9,17 @@ import 'react-responsive-pagination/themes/classic.css';
 
 const Home = () => {
     const [data, setData] = useState([]);
+    const [allData, setAllData] = useState([]);
     const [totalPages, setPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [categories, setCategories] = useState([]);
     const [activeCat, setActiveCat] = useState('all');
+    // const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(100000);
+    const [userPriceLimit, setUserPriceLimit] = useState(1000);
+    const [modalData, setModelData] = useState({});
+
+    // console.log(minPrice);
 
 
     const getData = async () => {
@@ -29,13 +36,44 @@ const Home = () => {
         if (response.status !== 200) return alert('something went wrong');
 
         setData(response.data.products);
+        setAllData(response.data.products)
         setPages(Math.ceil((response.data.total) / 12));
+
+        console.log(response.data.products);
+        response.data.products.forEach((item)=>{
+            // let min = Infinity;
+            let max = -Infinity;
+
+            // if(item.price < min){
+            //     min = item.price;
+            // };
+
+            // setMinPrice(min);
+
+            // console.log(min);
+
+            if(item.price > max){
+                max = item.price;
+            };
+
+            setMaxPrice(max);
+        })
     }
 
     useEffect(() => {
         getData()
     }, [currentPage, activeCat]);
 
+    const priceFilter = ()=>{
+        const pricedata = allData.filter((item)=> item.price <= userPriceLimit);
+        setData(pricedata);
+
+        console.log(pricedata);
+    }
+
+    useEffect(()=>{
+        priceFilter();
+    },[userPriceLimit])
 
 
     const [open, setOpen] = useState(false);
@@ -46,12 +84,16 @@ const Home = () => {
     const getCategories = async()=>{
         const response = await axios.get('https://dummyjson.com/products/categories');
         setCategories(response.data);
-
-        console.log(response.data);
     }
     useEffect(()=>{
         getCategories();
     },[]);
+
+    const handelModel = (indexdata)=>{
+        console.log(data[indexdata]);
+        setModelData(data[indexdata]);
+        onOpenModal();
+    };
 
     return (
         <>
@@ -82,11 +124,18 @@ const Home = () => {
                         }
                         </ul>
                     </div>
+                    <div className='price-filter'>
+                       <input type='range' min={0} max={maxPrice} onChange={(e)=>{setUserPriceLimit(Number(e.target.value))}} />
+                       <div>
+                        <span>Max price</span>
+                        <span>{userPriceLimit}</span>
+                       </div>
+                    </div>
                 </div>
                 <div className='products'>
                     {
                         data.map((product, index) => (
-                            <ProductCard key={index} modalOpen={onOpenModal} data={product} />
+                            <ProductCard key={index} modalOpen={()=>{handelModel(index)}} data={product} />
                         ))
                     }
                 </div>
@@ -101,7 +150,7 @@ const Home = () => {
             <div>
                 {/* <button onClick={onOpenModal}>Open modal</button> */}
                 <Modal open={open} onClose={onCloseModal} center>
-                    <h2>Simple centered modal</h2>
+                    <h2>{modalData.title}</h2>
                 </Modal>
             </div>
         </>
