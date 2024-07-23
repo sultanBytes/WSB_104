@@ -6,6 +6,9 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic.css';
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css';
+import Cookies from 'js-cookie';
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -14,19 +17,20 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [categories, setCategories] = useState([]);
     const [activeCat, setActiveCat] = useState('all');
-    // const [minPrice, setMinPrice] = useState(0);
+    const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(100000);
     const [userPriceLimit, setUserPriceLimit] = useState(1000);
     const [modalData, setModelData] = useState({});
+    const [cartCount, setCartCount] = useState(null);
 
-    // console.log(minPrice);
+
 
 
     const getData = async () => {
         let url = `https://dummyjson.com/products?limit=12&skip=${(currentPage - 1) * 12}`;
 
-        if(activeCat !== 'all'){
-            url =  `https://dummyjson.com/products/category/${activeCat}?limit=12&skip=${(currentPage - 1) * 12}`;
+        if (activeCat !== 'all') {
+            url = `https://dummyjson.com/products/category/${activeCat}?limit=12&skip=${(currentPage - 1) * 12}`;
         }
 
         const response = await axios.get(url);
@@ -39,41 +43,36 @@ const Home = () => {
         setAllData(response.data.products)
         setPages(Math.ceil((response.data.total) / 12));
 
-        console.log(response.data.products);
-        response.data.products.forEach((item)=>{
-            // let min = Infinity;
-            let max = -Infinity;
+        let min = Infinity;
+        let max = -Infinity;
+        response.data.products.forEach((item) => {
 
-            // if(item.price < min){
-            //     min = item.price;
-            // };
-
-            // setMinPrice(min);
-
-            // console.log(min);
-
-            if(item.price > max){
-                max = item.price;
+            if (item.price < min) {
+                min = item.price;
             };
 
-            setMaxPrice(max);
+            if (item.price > max) {
+                max = item.price;
+            };
         })
+
+        setMinPrice(min);
+        setMaxPrice(max);
+        setUserPriceLimit(max);
     }
 
     useEffect(() => {
         getData()
     }, [currentPage, activeCat]);
 
-    const priceFilter = ()=>{
-        const pricedata = allData.filter((item)=> item.price <= userPriceLimit);
+    const priceFilter = () => {
+        const pricedata = allData.filter((item) => item.price <= userPriceLimit);
         setData(pricedata);
-
-        console.log(pricedata);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         priceFilter();
-    },[userPriceLimit])
+    }, [userPriceLimit])
 
 
     const [open, setOpen] = useState(false);
@@ -81,23 +80,50 @@ const Home = () => {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
-    const getCategories = async()=>{
+    const getCategories = async () => {
         const response = await axios.get('https://dummyjson.com/products/categories');
         setCategories(response.data);
     }
-    useEffect(()=>{
+    useEffect(() => {
         getCategories();
-    },[]);
+    }, []);
 
-    const handelModel = (indexdata)=>{
-        console.log(data[indexdata]);
+    const handelModel = (indexdata) => {
         setModelData(data[indexdata]);
         onOpenModal();
     };
 
+    const handleAddtoCart = (productData) => {
+        let olddata = Cookies.get('product-cart');
+        if (olddata) {
+            olddata = JSON.parse(olddata);
+        } else {
+            olddata = [];
+        }
+
+
+        const indexNo = olddata.findIndex((item) => item.item.id === productData.id);
+
+        if (indexNo !== -1) {
+            olddata[indexNo].quentity = olddata[indexNo].quentity + 1;
+
+            Cookies.set('product-cart', JSON.stringify(olddata));
+        } else {
+            const data = {
+                item: productData,
+                quentity: 1
+            }
+
+            olddata.push(data);
+            Cookies.set('product-cart', JSON.stringify(olddata));
+        }
+
+
+
+    }
     return (
         <>
-            <Header />
+            <Header cart={cartCount} />
             <div className='page-btns'>
                 <ResponsivePagination
                     current={currentPage}
@@ -110,32 +136,32 @@ const Home = () => {
                     <div className='categories'>
                         <h4>Categories</h4>
                         <ul>
-                        <li 
-                        className={`${(activeCat === 'all') ? 'active-cat-li' : ''}`}
-                        onClick={()=>{setActiveCat('all')}}
-                        >All</li>
-                        {
-                            categories.map((cat)=>(
-                                <li 
-                                className={`${(activeCat === cat.slug) ? 'active-cat-li' : ''}`}
-                                onClick={()=>{setActiveCat(cat.slug)}}
-                                >{cat.name}</li>
-                            ))
-                        }
+                            <li
+                                className={`${(activeCat === 'all') ? 'active-cat-li' : ''}`}
+                                onClick={() => { setActiveCat('all') }}
+                            >All</li>
+                            {
+                                categories.map((cat) => (
+                                    <li
+                                        className={`${(activeCat === cat.slug) ? 'active-cat-li' : ''}`}
+                                        onClick={() => { setActiveCat(cat.slug) }}
+                                    >{cat.name}</li>
+                                ))
+                            }
                         </ul>
                     </div>
                     <div className='price-filter'>
-                       <input type='range' min={0} max={maxPrice} onChange={(e)=>{setUserPriceLimit(Number(e.target.value))}} />
-                       <div>
-                        <span>Max price</span>
-                        <span>{userPriceLimit}</span>
-                       </div>
+                        <input type='range' min={minPrice} value={userPriceLimit} max={maxPrice} onChange={(e) => { setUserPriceLimit(Number(e.target.value)) }} />
+                        <div>
+                            <span>Max price</span>
+                            <span>{userPriceLimit}</span>
+                        </div>
                     </div>
                 </div>
                 <div className='products'>
                     {
                         data.map((product, index) => (
-                            <ProductCard key={index} modalOpen={()=>{handelModel(index)}} data={product} />
+                            <ProductCard cartFunction={() => { handleAddtoCart(product) }} key={index} modalOpen={() => { handelModel(index) }} data={product} />
                         ))
                     }
                 </div>
@@ -150,7 +176,20 @@ const Home = () => {
             <div>
                 {/* <button onClick={onOpenModal}>Open modal</button> */}
                 <Modal open={open} onClose={onCloseModal} center>
-                    <h2>{modalData.title}</h2>
+                    <div className='modal-container'>
+                        <div>
+                            <Zoom>
+                                <img
+                                    alt="That Wanaka Tree, New Zealand by Laura Smetsers"
+                                    src={modalData.thumbnail}
+                                    width="500"
+                                />
+                            </Zoom>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
                 </Modal>
             </div>
         </>

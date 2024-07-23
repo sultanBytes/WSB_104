@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const ProductCard = ({data, modalOpen}) => {
-    // console.log(data);
+
+const ProductCard = ({data, modalOpen, cartFunction}) => {
   return (
     <div className='product-card'>
         <div className='thumbnail'>
@@ -9,8 +9,11 @@ const ProductCard = ({data, modalOpen}) => {
         </div>
         <div className='card-body'>
             <h2>{data.title}</h2>
+            <div className='price-div'>
+                price : {data.price}
+            </div>
             <div>
-                <button>Add to cart</button>
+                <button onClick={cartFunction}>Add to cart</button>
                 <button onClick={modalOpen}>Details</button>
             </div>
         </div>

@@ -107,3 +107,12 @@ img{
 .price-filter{
   padding: 20px 0;
 }
+
+.price-div{
+  text-align: center !important;
+}
+
+.modal-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
