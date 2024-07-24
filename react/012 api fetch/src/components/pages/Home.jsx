@@ -22,6 +22,7 @@ const Home = () => {
     const [userPriceLimit, setUserPriceLimit] = useState(1000);
     const [modalData, setModelData] = useState({});
     const [cartCount, setCartCount] = useState(null);
+    const [cartData, setCartData] = useState([]);
 
 
 
@@ -101,29 +102,50 @@ const Home = () => {
             olddata = [];
         }
 
+       
+        const indexNo = olddata.findIndex((item) => item.id === productData.id);
 
-        const indexNo = olddata.findIndex((item) => item.item.id === productData.id);
-
-        if (indexNo !== -1) {
+        if (indexNo === -1) {
+            const data = {
+                id: productData.id,
+                quentity: 1
+            }
+            olddata.push(data);
+            Cookies.set('product-cart', JSON.stringify(olddata));
+            
+        } else {
             olddata[indexNo].quentity = olddata[indexNo].quentity + 1;
 
             Cookies.set('product-cart', JSON.stringify(olddata));
-        } else {
-            const data = {
-                item: productData,
-                quentity: 1
-            }
-
-            olddata.push(data);
-            Cookies.set('product-cart', JSON.stringify(olddata));
         }
 
-
+        getCartData();
 
     }
+
+    const getCartData = ()=>{
+        let olddata = Cookies.get('product-cart');
+        if (olddata) {
+            olddata = JSON.parse(olddata);
+        } else {
+            olddata = [];
+        }
+
+        let total = 0;
+
+        olddata.forEach((item)=>{
+            total += item.quentity
+        })
+        setCartData(olddata);
+        setCartCount(total);
+    }
+
+    useEffect(()=>{
+        getCartData();
+    },[]);
     return (
         <>
-            <Header cart={cartCount} />
+            <Header cart={cartCount} cartData={cartData} />
             <div className='page-btns'>
                 <ResponsivePagination
                     current={currentPage}
